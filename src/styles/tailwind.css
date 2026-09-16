@@ -1,0 +1,77 @@
+/*
+ * Tailwind v4 entry point for the DAON landing page.
+ *
+ * Every colour, radius, ease and keyframe lives here so the page cannot drift
+ * section by section. Tokens declared in @theme become real utilities:
+ * bg-ink-950, text-mist, border-hairline, rounded-panel, ease-gateway...
+ */
+@import 'tailwindcss';
+
+@theme {
+  /* Surfaces: deep navy base, one step lighter per layer. */
+  --color-ink-950: #050816;
+  --color-ink-900: #0b1026;
+  --color-ink-850: #0f1533;
+  --color-ink-800: #141c3d;
+
+  /* One accent family: DAON blue. The deep stop is the CTA fill so white
+     label text keeps a 6.9:1 contrast ratio on navy. */
+  --color-daond: #4f8cff;
+  --color-daond-deep: #1677ff;
+  --color-daond-ink: #0a54c4;
+  --color-daond-soft: #b9d1ff;
+
+  /* Semantic hues. Never used for CTAs, only for service identity and state. */
+  --color-violet: #7c5cff;
+  --color-mint: #39d98a;
+  --color-amber: #ffb020;
+
+  --color-mist: #f5f7ff;
+  --color-muted: #9ca3af;
+  --color-hairline: #ffffff1f;
+
+  /* Korean glyphs fall back to the platform UI font: shipping a Noto Sans KR
+     webfont would add megabytes for a handful of secondary labels. */
+  --font-sans: 'Manrope Variable', 'Noto Sans KR', 'Apple SD Gothic Neo',
+    'Malgun Gothic', 'Segoe UI', system-ui, sans-serif;
+  --font-mono: ui-monospace, 'JetBrains Mono', SFMono-Regular, Menlo, monospace;
+
+  --radius-node: 20px;
+  --radius-panel: 24px;
+
+  /* One easing curve for the whole page: fast out, long settle. */
+  --ease-gateway: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --animate-dash-flow: dash-flow 5s linear infinite;
+  --animate-core-pulse: core-pulse 6s ease-in-out infinite;
+  --animate-halo-drift: halo-drift 22s ease-in-out infinite;
+}
+
+/* Running data flow along a connection. Dash period is 24 units. */
+@keyframes dash-flow {
+  to {
+    stroke-dashoffset: -24;
+  }
+}
+
+@keyframes core-pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(0.98);
+  }
+  50% {
+    opacity: 0.75;
+    transform: scale(1.03);
+  }
+}
+
+@keyframes halo-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(2%, -3%, 0) scale(1.08);
+  }
+}

@@ -1,0 +1,2 @@
+/* Entry stylesheet. Design tokens and layers live in src/styles/. */
+@import './styles/globals.css';
